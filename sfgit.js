@@ -45,6 +45,15 @@ var deleteFolderRecursive = function(path, exclude, doNotDeleteRoot) {
 module.exports = {
     doAll : function(mainCallback){
 
+        var sshKey = process.env.REPO_SSH_KEY || "";
+        if (sshKey.length > 0) {
+            if (fs.existsSync('~/.ssh')) {
+                fs.mkdirSync('~/.ssh')
+            }
+            fs.writeFileSync('~/.ssh/id_rsa', sshKey);
+            fs.chmodSync('~/.ssh/id_rsa', 600);
+        }
+
         var loginUrl = process.env.SF_LOGIN_URL || "https://login.salesforce.com";
         //status object
         var status = {

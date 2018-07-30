@@ -56,6 +56,11 @@
           "required" : false,
           "value":""
         },
+        "REPO_SSH_KEY": {
+          "description": "Private key for SSH connection",
+          "required" : false,
+          "value":""
+        },
         "EXCLUDE_METADATA": {
           "description": "Coma separated list of unwanted metadata items (es. Scontrol,Settings,CustomLabels)",
           "required" : false,
