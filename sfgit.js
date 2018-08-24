@@ -47,7 +47,7 @@ module.exports = {
 
         var sshKey = process.env.REPO_SSH_KEY || "";
         if (sshKey.length > 0) {
-            if (fs.existsSync('~/.ssh')) {
+            if (!fs.existsSync('~/.ssh')) {
                 fs.mkdirSync('~/.ssh')
             }
             fs.writeFileSync('~/.ssh/id_rsa', sshKey);
